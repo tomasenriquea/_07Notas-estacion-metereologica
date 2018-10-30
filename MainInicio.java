@@ -36,16 +36,24 @@ public class MainInicio {
 
 		String accion = args[0]; // Sevira para elegir la accion a realizar
 
+		int id;
+		String fecha;
+		double temperatura;
+		double humedad;
+		int precipitacion;
+		
+		Meteo clima = null;
+		
 		// Compara la opcion elegida
 		if (accion.equalsIgnoreCase("guardar")) { // crea archivo y guarda datos
-			int id = Integer.parseInt(args[1]);
-			String fecha = args[2];
-			double temperatura = Double.parseDouble(args[3]);
-			double humedad = Double.parseDouble(args[4]);
-			int precipitacion = Integer.parseInt(args[5]);
+			id = Integer.parseInt(args[1]);
+			fecha = args[2];
+			temperatura = Double.parseDouble(args[3]);
+			humedad = Double.parseDouble(args[4]);
+			precipitacion = Integer.parseInt(args[5]);
 
 			EscrituraRegistros escrituraRegistros = new EscrituraRegistros();
-			Meteo clima = new Meteo(id, fecha, temperatura, humedad, precipitacion);
+			clima = new Meteo(id, fecha, temperatura, humedad, precipitacion);
 			escrituraRegistros.guardarRegistro(clima);
 		}
 		else if (accion.equalsIgnoreCase("lectura")) { // Leer los datos en el archivo
@@ -54,7 +62,14 @@ public class MainInicio {
 		} 
 		else if (accion.equalsIgnoreCase("crearXML")) { // crea un archivo XML de la archivo objeto
 			
-			//CrearXML.crearXML(id, fecha, temperatura, humedad, precipitacion);
+			id = Integer.parseInt(args[1]);
+			fecha = args[2];
+			temperatura = Double.parseDouble(args[3]);
+			humedad = Double.parseDouble(args[4]);
+			precipitacion = Integer.parseInt(args[5]);
+			
+			
+			CrearXML.crearXML(id, fecha, temperatura, humedad, precipitacion);
 			
 			
 			
